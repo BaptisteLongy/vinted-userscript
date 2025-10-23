@@ -3,13 +3,14 @@
 // @namespace    mailto:baptiste.longy@gmail.com
 // @version      0.0.2
 // @updateURL    https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
+// @downloadURL    https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
 // @description  My Vinted helper, because Vinted has no API
 // @author       Baptiste Longy
 // @match        https://www.vinted.fr/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vinted.fr
 // @grant        GM_xmlhttpRequest
 // @connect      www.vinted.fr
-// run-at        document-start
+// @run-at        document-start
 // ==/UserScript==
 
 function getRandomInt(min, max) {
