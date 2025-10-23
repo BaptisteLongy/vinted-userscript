@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name         Vinted Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
-// @version      0.0.1
+// @version      0.0.2
+// @updateURL    https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
 // @description  My Vinted helper, because Vinted has no API
 // @author       Baptiste Longy
 // @match        https://www.vinted.fr/*
