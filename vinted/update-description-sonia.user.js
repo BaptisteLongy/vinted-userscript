@@ -185,18 +185,18 @@ function changeDescription(descriptionField) {
                 nativeInputValueSetter.call(descriptionField, descriptionField.value.replace(dashStr, newDashStr));
                 descriptionField.dispatchEvent(new Event('input', { bubbles: true }))
             }
+        }
 
-            // ----------------------------
-            // Comment this to include all items
-            const saveButton = document.querySelector('button[data-testid="upload-form-save-button"]');
-            // const saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
-            // ----------------------------
+        // ----------------------------
+        // Comment this to include all items
+        const saveButton = document.querySelector('button[data-testid="upload-form-save-button"]');
+        // const saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
+        // ----------------------------
 
-            if (saveButton) {
-                setTimeout(() => {
-                    saveButton.click();
-                }, getRandomInt(5, 15) * 1000);
-            }
+        if (saveButton) {
+            setTimeout(() => {
+                saveButton.click();
+            }, getRandomInt(5, 15) * 1000);
         }
     }
 }
