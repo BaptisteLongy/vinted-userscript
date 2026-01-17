@@ -39,7 +39,14 @@ async function gatherAllArticles() {
         })
     let data = await response.json();
     let totalPages = data.pagination.total_pages;
-    let fetchedWardrobeItems = [...data.items.map(item => item.id)];
+
+    // ----------------------------
+    // Comment this to include all items
+    let filteredItems = data.items.filter(item => !item.is_draft && !item.is_closed && !item.is_hidden);
+    // let filteredItems = data.items;
+    // ----------------------------
+
+    let fetchedWardrobeItems = [...filteredItems.map(item => item.id)];
 
     while (page !== totalPages) {
         page += 1;
