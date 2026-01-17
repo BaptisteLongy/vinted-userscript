@@ -2,9 +2,8 @@
 // @name         Vinted Update description Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
 // @version      0.0.4
-// @updateURL    https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
-// @downloadURL  https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
-// @description  My Vinted helper, because Vinted has no API
+// @updateURL    https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
+// @downloadURL  https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @author       Baptiste Longy
 // @match        https://www.vinted.fr/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vinted.fr
