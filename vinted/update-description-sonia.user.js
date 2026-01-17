@@ -103,7 +103,7 @@ function navigateToNextArticle() {
                 localStorage.removeItem('vinted_index_from_baptiste');
                 localStorage.removeItem('vinted_baptiste_is_updating_descriptions');
                 alert("Baptiste a fini :)");
-                const draftButton = document.querySelector('button[data-testid="closet-seller-filters-draft"]');
+                const draftButton = document.querySelector('button[data-testid="closet-seller-filters-sold"]');
                 addUpdateDescriptionButton(draftButton);
                 removeVeil();
             }
@@ -128,7 +128,7 @@ function addUpdateDescriptionButton(draftButton) {
 function observeDraftButton() {
     const observer = new MutationObserver((mutations, obs) => {
         if (document.URL.includes("/member/")) {
-            const draftButton = document.querySelector('button[data-testid="closet-seller-filters-draft"]');
+            const draftButton = document.querySelector('button[data-testid="closet-seller-filters-sold"]');
             if (draftButton) {
                 addUpdateDescriptionButton(draftButton);
                 obs.disconnect(); // Stop observing after the button is found and handled
