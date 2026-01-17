@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Vinted Update description Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
-// @version      0.0.5
+// @version      0.0.6
 // @updateURL    https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @downloadURL  https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @description  Helper script to update descriptions on Vinted by adding/removing dashes in the description to trigger an update. Made for Sonia.
@@ -42,7 +42,7 @@ async function gatherAllArticles() {
 
     // ----------------------------
     // Comment this to include all items
-    let filteredItems = data.items.filter(item => !item.is_draft && !item.is_closed && !item.is_hidden);
+    let filteredItems = data.items.filter(item => !item.is_draft && !item.is_closed && !item.is_hidden && !item.is_reserved);
     // let filteredItems = data.items;
     // ----------------------------
 
@@ -94,7 +94,7 @@ function navigateToNextArticle() {
                 // Navigate to the next article
                 window.location.assign(`https://www.vinted.fr/items/${articles[index]}/edit`);
             }
-            , index === 0 ? 0 : getRandomInt(7, 10) * 1000);
+            , index === 0 ? 0 : getRandomInt(3, 10) * 1000);
     } else {
         setTimeout(
             () => {
@@ -186,11 +186,16 @@ function changeDescription(descriptionField) {
                 descriptionField.dispatchEvent(new Event('input', { bubbles: true }))
             }
 
-            const saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
+            // ----------------------------
+            // Comment this to include all items
+            const saveButton = document.querySelector('button[data-testid="upload-form-save-button"]');
+            // const saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
+            // ----------------------------
+
             if (saveButton) {
                 setTimeout(() => {
                     saveButton.click();
-                }, getRandomInt(2, 5) * 1000);
+                }, getRandomInt(5, 15) * 1000);
             }
         }
     }
