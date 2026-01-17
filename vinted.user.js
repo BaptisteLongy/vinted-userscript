@@ -105,6 +105,7 @@ function navigateToNextArticle() {
                 alert("Baptiste a fini :)");
                 const draftButton = document.querySelector('button[data-testid="closet-seller-filters-draft"]');
                 addUpdateDescriptionButton(draftButton);
+                removeVeil();
             }
             , 3000);
     }
@@ -195,6 +196,27 @@ function changeDescription(descriptionField) {
     }
 }
 
+
+function addVeil() {
+    const veil = document.createElement('div');
+    veil.id = 'baptiste-veil';
+    veil.style.position = 'fixed';
+    veil.style.top = '0';
+    veil.style.left = '0';
+    veil.style.width = '100%';
+    veil.style.height = '100%';
+    veil.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    veil.style.zIndex = '9999';
+    document.body.appendChild(veil);
+}
+
+function removeVeil() {
+    const veil = document.getElementById('baptiste-veil');
+    if (veil) {
+        veil.remove();
+    }
+}
+
 (function () {
     'use strict';
 
@@ -202,8 +224,10 @@ function changeDescription(descriptionField) {
     if (localStorage.getItem('vinted_baptiste_is_updating_descriptions')
         && document.URL.includes("/items/")
         && document.URL.includes("/edit")) {
+        addVeil();
         observeDescriptionField();
     } else if (localStorage.getItem('vinted_baptiste_is_updating_descriptions')) {
+        addVeil();
         navigateToNextArticle();
     } else {
         observeDraftButton();
