@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Vinted Update description Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
-// @version      0.0.8
+// @version      0.0.9
 // @updateURL    https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @downloadURL  https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @description  Helper script to update descriptions on Vinted by adding/removing dashes in the description to trigger an update. Made for Sonia.
@@ -142,6 +142,22 @@ function observeDraftButton() {
     });
 }
 
+
+function observeSiteWrapper() {
+    const observer = new MutationObserver((mutations, obs) => {
+        const siteWrapper = document.querySelector('div[class="site-wrapper"]');
+        if (siteWrapper) {
+            addVeil();
+            obs.disconnect(); // Stop observing after the button is found and handled
+        }
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+}
+
 function observeDescriptionField() {
     const observer = new MutationObserver((mutations, obs) => {
         if (document.URL.includes("/items/")
@@ -229,10 +245,10 @@ function removeVeil() {
     if (localStorage.getItem('vinted_baptiste_is_updating_descriptions')
         && document.URL.includes("/items/")
         && document.URL.includes("/edit")) {
-        addVeil();
+        observeSiteWrapper();
         observeDescriptionField();
     } else if (localStorage.getItem('vinted_baptiste_is_updating_descriptions')) {
-        addVeil();
+        observeSiteWrapper();
         navigateToNextArticle();
     } else {
         observeDraftButton();
