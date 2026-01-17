@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Vinted Update description Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
-// @version      0.0.6
+// @version      0.0.7
 // @updateURL    https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @downloadURL  https://github.com/BaptisteLongy/online-shopping-userscript/raw/refs/heads/master/vinted/update-description-sonia.user.js
 // @description  Helper script to update descriptions on Vinted by adding/removing dashes in the description to trigger an update. Made for Sonia.
