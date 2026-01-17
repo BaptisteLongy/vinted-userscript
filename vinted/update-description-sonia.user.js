@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Vinted Helper for Sonia
+// @name         Vinted Update description Helper for Sonia
 // @namespace    mailto:baptiste.longy@gmail.com
 // @version      0.0.4
 // @updateURL    https://github.com/BaptisteLongy/vinted-userscript/raw/refs/heads/master/vinted.user.js
@@ -10,7 +10,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=vinted.fr
 // @grant        GM_xmlhttpRequest
 // @connect      www.vinted.fr
-// @run-at        document-start
+// @run-at       document-start
 // ==/UserScript==
 
 function getRandomInt(min, max) {
