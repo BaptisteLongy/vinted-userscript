@@ -107,15 +107,14 @@ function navigateToNextArticle() {
                 localStorage.removeItem('vinted_index_from_baptiste');
                 localStorage.removeItem('vinted_baptiste_is_updating_descriptions');
                 alert("Baptiste a fini :)");
-                const draftButton = document.querySelector('button[data-testid="closet-seller-filters-sold"]');
-                addUpdateDescriptionButton(draftButton);
+                addUpdateDescriptionButton();
                 removeVeil();
             }
             , 3000);
     }
 }
 
-function addUpdateDescriptionButton(draftButton) {
+function addUpdateDescriptionButton() {
     let btn = document.createElement("button");
     btn.innerHTML = `<div class="web_ui__Chip__text"><span class="web_ui__Text__text web_ui__Text__subtitle web_ui__Text__left web_ui__Text__amplified web_ui__Text__truncated">MAJ Description${devMode ? " - Dev Mode" : ""}</span></div>`
     btn.className = "web_ui__Chip__chip web_ui__Chip__outlined web_ui__Chip__round";
@@ -125,7 +124,8 @@ function addUpdateDescriptionButton(draftButton) {
         updateAllDescriptions();
     };
 
-    draftButton.after(btn);
+    const closetFilterBox = document.querySelector('div[data-testid="closet-seller-filters"]');
+    closetFilterBox.appendChild(btn);
 }
 
 // Observe DOM changes and add buttons when their targets appear
