@@ -13,6 +13,9 @@
 // @run-at       document-start
 // ==/UserScript==
 
+// Turn to true to enable dev mode
+const devMode = false;
+
 function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
@@ -40,11 +43,12 @@ async function gatherAllArticles() {
     let data = await response.json();
     let totalPages = data.pagination.total_pages;
 
-    // ----------------------------
-    // Comment this to include all items
-    let filteredItems = data.items.filter(item => !item.is_draft && !item.is_closed && !item.is_hidden && !item.is_reserved);
-    // let filteredItems = data.items;
-    // ----------------------------
+    let filteredItems;
+    if (devMode) {
+        filteredItems = data.items;
+    } else {
+        filteredItems = data.items.filter(item => !item.is_draft && !item.is_closed && !item.is_hidden && !item.is_reserved);
+    }
 
     let fetchedWardrobeItems = [...filteredItems.map(item => item.id)];
 
@@ -113,7 +117,7 @@ function navigateToNextArticle() {
 
 function addUpdateDescriptionButton(draftButton) {
     let btn = document.createElement("button");
-    btn.innerHTML = '<div class="web_ui__Chip__text"><span class="web_ui__Text__text web_ui__Text__subtitle web_ui__Text__left web_ui__Text__amplified web_ui__Text__truncated">MAJ Description</span></div>'
+    btn.innerHTML = `<div class="web_ui__Chip__text"><span class="web_ui__Text__text web_ui__Text__subtitle web_ui__Text__left web_ui__Text__amplified web_ui__Text__truncated">MAJ Description${devMode ? " - Dev Mode" : ""}</span></div>`
     btn.className = "web_ui__Chip__chip web_ui__Chip__outlined web_ui__Chip__round";
     btn.type = "button";
     btn.style.marginLeft = "5px";
@@ -203,11 +207,12 @@ function changeDescription(descriptionField) {
             }
         }
 
-        // ----------------------------
-        // Comment this to include all items
-        const saveButton = document.querySelector('button[data-testid="upload-form-save-button"]');
-        // const saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
-        // ----------------------------
+        let saveButton;
+        if (devMode) {
+            saveButton = document.querySelector('button[data-testid="upload-form-save-draft-button"]');
+        } else {
+            saveButton = document.querySelector('button[data-testid="upload-form-save-button"]');
+        }
 
         if (saveButton) {
             setTimeout(() => {
