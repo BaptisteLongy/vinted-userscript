@@ -233,6 +233,44 @@ function addVeil() {
     veil.style.height = '100%';
     veil.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     veil.style.zIndex = '9999';
+    veil.style.display = 'flex';
+    veil.style.justifyContent = 'center';
+    veil.style.alignItems = 'center';
+
+    // Create progress bar container
+    const progressContainer = document.createElement('div');
+    progressContainer.style.width = '300px';
+    progressContainer.style.backgroundColor = '#ffffff';
+    progressContainer.style.borderRadius = '10px';
+    progressContainer.style.padding = '20px';
+    progressContainer.style.textAlign = 'center';
+
+    // Create progress bar
+    const progressBar = document.createElement('progress');
+    progressBar.id = 'baptiste-progress-bar';
+    progressBar.style.width = '100%';
+    progressBar.style.height = '30px';
+    progressBar.style.borderRadius = '5px';
+    
+    const articles = JSON.parse(localStorage.getItem('vinted_articles_from_baptiste') || '[]');
+    const index = parseInt(localStorage.getItem('vinted_index_from_baptiste') || '0');
+    
+    progressBar.max = articles.length;
+    progressBar.value = index;
+    
+    // Create text display
+    const progressText = document.createElement('div');
+    progressText.id = 'baptiste-progress-text';
+    progressText.style.color = 'black';
+    progressText.style.marginTop = '10px';
+    progressText.style.fontSize = '16px';
+    progressText.style.fontWeight = 'bold';
+    progressText.innerHTML = `${index} / ${articles.length}`;
+    
+    progressContainer.appendChild(progressBar);
+    progressContainer.appendChild(progressText);
+    veil.appendChild(progressContainer);
+
     document.body.appendChild(veil);
 }
 
