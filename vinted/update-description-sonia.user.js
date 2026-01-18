@@ -129,13 +129,13 @@ function addUpdateDescriptionButton() {
 }
 
 // Observe DOM changes and add buttons when their targets appear
-function observeDraftButton() {
+function observeClosetList() {
     const observer = new MutationObserver((mutations, obs) => {
         if (document.URL.includes("/member/")) {
-            const draftButton = document.querySelector('button[data-testid="closet-seller-filters-sold"]');
-            if (draftButton) {
-                addUpdateDescriptionButton(draftButton);
-                obs.disconnect(); // Stop observing after the button is found and handled
+            const closetList = document.querySelector('div[class="feed-grid"]');
+            if (closetList) {
+                addUpdateDescriptionButton();
+                obs.disconnect(); // Stop observing after the list of items is found and handled
             }
         }
     });
@@ -256,6 +256,6 @@ function removeVeil() {
         observeSiteWrapper();
         navigateToNextArticle();
     } else {
-        observeDraftButton();
+        observeClosetList();
     }
 })();
